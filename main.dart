@@ -1,34 +1,36 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const ReminderListApp());
+void main() => runApp(const ReminderStateApp());
 
-class ReminderListApp extends StatelessWidget {
-  const ReminderListApp({super.key});
+class ReminderStateApp extends StatelessWidget {
+  const ReminderStateApp({super.key});
   @override
-  Widget build(BuildContext context) => MaterialApp(
-    home: Scaffold(appBar: AppBar(title: const Text('My Reminders')), body: const ReminderList()),
-  );
+  Widget build(BuildContext context) => MaterialApp(home: Scaffold(
+    appBar: AppBar(title: const Text('Reminder Counter')),
+    body: const ReminderCounter(),
+  ));
 }
 
-class ReminderList extends StatefulWidget {
-  const ReminderList({super.key});
+class ReminderCounter extends StatefulWidget {
+  const ReminderCounter({super.key});
   @override
-  State<ReminderList> createState() => _ReminderListState();
+  State<ReminderCounter> createState() => _ReminderCounterState();
 }
 
-class _ReminderListState extends State<ReminderList> {
-  final reminders = ['Study Flutter', 'College Time', 'Complete Assignment'];
+class _ReminderCounterState extends State<ReminderCounter> {
+  int completed = 0;
   @override
-  Widget build(BuildContext context) => ListView.builder(
-    itemCount: reminders.length,
-    itemBuilder: (context, index) => Card(
-      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
-      child: ListTile(
-        leading: const Icon(Icons.alarm, color: Colors.deepPurple),
-        title: Text(reminders[index]),
-        subtitle: const Text('Reminder'),
-        trailing: IconButton(icon: const Icon(Icons.delete_outline), onPressed: () => setState(() => reminders.removeAt(index))),
-      ),
-    ),
-  );
+  Widget build(BuildContext context) => Center(child: Column(
+    mainAxisSize: MainAxisSize.min,
+    children: [
+      const Icon(Icons.task_alt, size: 60, color: Colors.deepPurple),
+      const Text('Completed reminders', style: TextStyle(fontSize: 20)),
+      Text('$completed', style: const TextStyle(fontSize: 40)),
+      Row(mainAxisSize: MainAxisSize.min, children: [
+        ElevatedButton(onPressed: completed > 0 ? () => setState(() => completed--) : null, child: const Text('-')),
+        const SizedBox(width: 12),
+        ElevatedButton(onPressed: () => setState(() => completed++), child: const Text('Mark complete')),
+      ]),
+    ],
+  ));
 }

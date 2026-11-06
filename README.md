@@ -1,7 +1,7 @@
-# Lists and Cards with Delete
+# State Management with setState
 
 ## Aim
-To demonstrate lists and cards with delete in the context of an Alarm Reminder application.
+To demonstrate state management with setstate in the context of an Alarm Reminder application.
 
 ## Run using Command Prompt (without VS Code)
 1. Open CMD.
@@ -10,10 +10,10 @@ To demonstrate lists and cards with delete in the context of an Alarm Reminder a
 4. Run `flutter run -d chrome`.
 
 ## Expected output
-A working Flutter screen demonstrating lists and cards with delete using reminder-related content.
+A working Flutter screen demonstrating state management with setstate using reminder-related content.
 
 ## Screenshot
 Save your screenshot in this folder's `output` directory after running the app.
 
 ## Result
-The experiment demonstrates lists and cards with delete.
+The experiment demonstrates state management with setstate.
