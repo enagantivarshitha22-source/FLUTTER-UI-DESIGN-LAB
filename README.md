@@ -1,7 +1,7 @@
-# State Management with setState
+# Responsive User Interface
 
 ## Aim
-To demonstrate state management with setstate in the context of an Alarm Reminder application.
+To demonstrate responsive user interface in the context of an Alarm Reminder application.
 
 ## Run using Command Prompt (without VS Code)
 1. Open CMD.
@@ -10,10 +10,10 @@ To demonstrate state management with setstate in the context of an Alarm Reminde
 4. Run `flutter run -d chrome`.
 
 ## Expected output
-A working Flutter screen demonstrating state management with setstate using reminder-related content.
+A working Flutter screen demonstrating responsive user interface using reminder-related content.
 
 ## Screenshot
 Save your screenshot in this folder's `output` directory after running the app.
 
 ## Result
-The experiment demonstrates state management with setstate.
+The experiment demonstrates responsive user interface.
