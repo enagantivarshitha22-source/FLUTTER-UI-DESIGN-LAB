@@ -1,34 +1,84 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const ResponsiveReminderApp());
+void main() => runApp(const AlarmReminderApp());
 
-class ResponsiveReminderApp extends StatelessWidget {
-  const ResponsiveReminderApp({super.key});
+class AlarmReminderApp extends StatelessWidget {
+  const AlarmReminderApp({super.key});
   @override
   Widget build(BuildContext context) => MaterialApp(
-    home: Scaffold(
-      appBar: AppBar(title: const Text('Responsive Alarm Reminder')),
-      body: LayoutBuilder(builder: (context, constraints) {
-        final wide = constraints.maxWidth >= 600;
-        final items = [
-          reminderCard(Icons.book, 'Study Flutter', '9:00 AM'),
-          reminderCard(Icons.school, 'College Time', '10:00 AM'),
-          reminderCard(Icons.assignment, 'Complete Assignment', '5:00 PM'),
-        ];
-        return Padding(
-          padding: const EdgeInsets.all(16),
-          child: wide
-            ? GridView.count(crossAxisCount: 3, crossAxisSpacing: 12, children: items)
-            : ListView(children: items),
-        );
-      }),
-    ),
+    title: 'Alarm Reminder',
+    theme: ThemeData(colorSchemeSeed: Colors.deepPurple, useMaterial3: true),
+    home: const AlarmHomePage(),
   );
 }
 
-Widget reminderCard(IconData icon, String title, String time) => Card(
-  child: Padding(padding: const EdgeInsets.all(14), child: Column(
-    mainAxisAlignment: MainAxisAlignment.center,
-    children: [Icon(icon, size: 32, color: Colors.deepPurple), const SizedBox(height: 8), Text(title, textAlign: TextAlign.center), Text(time)],
-  )),
-);
+class AlarmHomePage extends StatefulWidget {
+  const AlarmHomePage({super.key});
+  @override
+  State<AlarmHomePage> createState() => _AlarmHomePageState();
+}
+
+class _AlarmHomePageState extends State<AlarmHomePage> {
+  final List<String> reminders = ['Study Flutter', 'College Time', 'Complete Assignment'];
+  final controller = TextEditingController();
+
+  @override
+  void dispose() {
+    controller.dispose();
+    super.dispose();
+  }
+
+  void addReminder() {
+    showDialog(context: context, builder: (dialogContext) => AlertDialog(
+      title: const Text('Add Reminder'),
+      content: TextField(
+        controller: controller,
+        autofocus: true,
+        decoration: const InputDecoration(hintText: 'Enter reminder name'),
+        onSubmitted: (_) => submitReminder(dialogContext),
+      ),
+      actions: [
+        TextButton(onPressed: () => Navigator.pop(dialogContext), child: const Text('Cancel')),
+        ElevatedButton(onPressed: () => submitReminder(dialogContext), child: const Text('Add')),
+      ],
+    ));
+  }
+
+  void submitReminder(BuildContext dialogContext) {
+    final value = controller.text.trim();
+    if (value.isNotEmpty) {
+      setState(() => reminders.add(value));
+      controller.clear();
+      Navigator.pop(dialogContext);
+    }
+  }
+
+  @override
+  Widget build(BuildContext context) => Scaffold(
+    appBar: AppBar(title: const Text('Alarm Reminder')),
+    body: Padding(
+      padding: const EdgeInsets.all(12),
+      child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+        const Padding(padding: EdgeInsets.all(8), child: Text('My Reminders', style: TextStyle(fontSize: 24, fontWeight: FontWeight.bold))),
+        Expanded(child: reminders.isEmpty
+          ? const Center(child: Text('No reminders yet. Tap + to add one.'))
+          : ListView.builder(
+            itemCount: reminders.length,
+            itemBuilder: (context, index) => Card(
+              child: ListTile(
+                leading: const Icon(Icons.alarm, color: Colors.deepPurple),
+                title: Text(reminders[index]),
+                subtitle: const Text('Reminder'),
+                trailing: IconButton(
+                  tooltip: 'Delete reminder',
+                  icon: const Icon(Icons.delete_outline),
+                  onPressed: () => setState(() => reminders.removeAt(index)),
+                ),
+              ),
+            ),
+          )),
+      ]),
+    ),
+    floatingActionButton: FloatingActionButton(onPressed: addReminder, child: const Icon(Icons.add)),
+  );
+}
