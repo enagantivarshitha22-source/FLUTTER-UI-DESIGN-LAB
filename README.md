@@ -1,7 +1,7 @@
-# Widgets and Layouts
+# Row and Column
 
 ## Aim
-To demonstrate widgets and layouts in the context of an Alarm Reminder application.
+To demonstrate row and column in the context of an Alarm Reminder application.
 
 ## Run using Command Prompt (without VS Code)
 1. Open CMD.
@@ -10,10 +10,10 @@ To demonstrate widgets and layouts in the context of an Alarm Reminder applicati
 4. Run `flutter run -d chrome`.
 
 ## Expected output
-A working Flutter screen demonstrating widgets and layouts using reminder-related content.
+A working Flutter screen demonstrating row and column using reminder-related content.
 
 ## Screenshot
 Save your screenshot in this folder's `output` directory after running the app.
 
 ## Result
-The experiment demonstrates widgets and layouts.
+The experiment demonstrates row and column.
