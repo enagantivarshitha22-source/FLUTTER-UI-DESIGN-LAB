@@ -1,17 +1,19 @@
-# alarm_reminder
+# Dart Basics with Reminder Data
 
-A new Flutter project.
+## Aim
+To demonstrate dart basics with reminder data in the context of an Alarm Reminder application.
 
-## Getting Started
+## Run using Command Prompt (without VS Code)
+1. Open CMD.
+2. Use `cd /d "FULL_PATH_TO_THIS_EXPERIMENT_FOLDER"` to enter this folder.
+3. Run `flutter pub get`.
+4. Run `flutter run -d chrome`.
 
-This project is a starting point for a Flutter application.
+## Expected output
+A working Flutter screen demonstrating dart basics with reminder data using reminder-related content.
 
-A few resources to get you started if this is your first Flutter project:
+## Screenshot
+Save your screenshot in this folder's `output` directory after running the app.
 
-- [Learn Flutter](https://docs.flutter.dev/get-started/learn-flutter)
-- [Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Flutter learning resources](https://docs.flutter.dev/reference/learning-resources)
-
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Result
+The experiment demonstrates dart basics with reminder data.
