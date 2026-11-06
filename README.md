@@ -1,7 +1,7 @@
-# Navigation Between Screens
+# Lists and Cards with Delete
 
 ## Aim
-To demonstrate navigation between screens in the context of an Alarm Reminder application.
+To demonstrate lists and cards with delete in the context of an Alarm Reminder application.
 
 ## Run using Command Prompt (without VS Code)
 1. Open CMD.
@@ -10,10 +10,10 @@ To demonstrate navigation between screens in the context of an Alarm Reminder ap
 4. Run `flutter run -d chrome`.
 
 ## Expected output
-A working Flutter screen demonstrating navigation between screens using reminder-related content.
+A working Flutter screen demonstrating lists and cards with delete using reminder-related content.
 
 ## Screenshot
 Save your screenshot in this folder's `output` directory after running the app.
 
 ## Result
-The experiment demonstrates navigation between screens.
+The experiment demonstrates lists and cards with delete.

@@ -1,31 +1,34 @@
 import 'package:flutter/material.dart';
 
-void main() => runApp(const ReminderNavigationApp());
+void main() => runApp(const ReminderListApp());
 
-class ReminderNavigationApp extends StatelessWidget {
-  const ReminderNavigationApp({super.key});
+class ReminderListApp extends StatelessWidget {
+  const ReminderListApp({super.key});
   @override
   Widget build(BuildContext context) => MaterialApp(
-    home: Scaffold(
-      appBar: AppBar(title: const Text('Alarm Reminder')),
-      body: Center(child: ElevatedButton(
-        child: const Text('Open Reminder Details'),
-        onPressed: () => Navigator.push(context, MaterialPageRoute(builder: (_) => const DetailsPage())),
-      )),
-    ),
+    home: Scaffold(appBar: AppBar(title: const Text('My Reminders')), body: const ReminderList()),
   );
 }
 
-class DetailsPage extends StatelessWidget {
-  const DetailsPage({super.key});
+class ReminderList extends StatefulWidget {
+  const ReminderList({super.key});
   @override
-  Widget build(BuildContext context) => Scaffold(
-    appBar: AppBar(title: const Text('Reminder Details')),
-    body: const Center(child: Column(mainAxisSize: MainAxisSize.min, children: [
-      Icon(Icons.alarm, size: 64, color: Colors.deepPurple),
-      SizedBox(height: 12),
-      Text('Study Flutter', style: TextStyle(fontSize: 24)),
-      Text('This is the reminder details screen.'),
-    ])),
+  State<ReminderList> createState() => _ReminderListState();
+}
+
+class _ReminderListState extends State<ReminderList> {
+  final reminders = ['Study Flutter', 'College Time', 'Complete Assignment'];
+  @override
+  Widget build(BuildContext context) => ListView.builder(
+    itemCount: reminders.length,
+    itemBuilder: (context, index) => Card(
+      margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+      child: ListTile(
+        leading: const Icon(Icons.alarm, color: Colors.deepPurple),
+        title: Text(reminders[index]),
+        subtitle: const Text('Reminder'),
+        trailing: IconButton(icon: const Icon(Icons.delete_outline), onPressed: () => setState(() => reminders.removeAt(index))),
+      ),
+    ),
   );
 }
