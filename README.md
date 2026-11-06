@@ -1,7 +1,7 @@
-# Input Widgets
+# Forms and Validation
 
 ## Aim
-To demonstrate input widgets in the context of an Alarm Reminder application.
+To demonstrate forms and validation in the context of an Alarm Reminder application.
 
 ## Run using Command Prompt (without VS Code)
 1. Open CMD.
@@ -10,10 +10,10 @@ To demonstrate input widgets in the context of an Alarm Reminder application.
 4. Run `flutter run -d chrome`.
 
 ## Expected output
-A working Flutter screen demonstrating input widgets using reminder-related content.
+A working Flutter screen demonstrating forms and validation using reminder-related content.
 
 ## Screenshot
 Save your screenshot in this folder's `output` directory after running the app.
 
 ## Result
-The experiment demonstrates input widgets.
+The experiment demonstrates forms and validation.
